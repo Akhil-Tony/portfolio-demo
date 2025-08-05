@@ -1,0 +1,546 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Nair - Growth for Capx.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --text: #EAEAEA;
+            --text-muted: #888888;
+            --accent: #4A90E2;
+            --accent-glow: rgba(74, 144, 226, 0.5);
+            --border-color: #222222;
+            --card-bg: #111111;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .blob {
+            background: linear-gradient(180deg, var(--accent) 0%, #3023AE 100%);
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+            transition: all 0.5s ease-out;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .contact-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+        
+        main {
+            padding: 80px 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        #typing-text {
+            color: var(--accent);
+            border-right: 3px solid var(--accent);
+            animation: blink 1s step-end infinite;
+            display: inline;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        .section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        
+        .section-title::before {
+            content: "// ";
+        }
+
+        .manifesto p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        
+        .manifesto strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background-color: var(--card-bg);
+            border-left: 3px solid var(--accent);
+            padding: 25px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+        
+        .grid-4-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px var(--accent-glow);
+        }
+
+        .card-content {
+           flex-grow: 1;
+        }
+
+        .card h3 {
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        
+        .card .metric {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .project-links {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .project-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--accent);
+        }
+
+        .career-card .company {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .career-card h3 {
+            font-size: 1.2rem;
+        }
+        
+        .career-card .date {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .career-card ul {
+            list-style-type: '- ';
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .attack-plan ol {
+            list-style-type: none;
+            counter-reset: plan-counter;
+            padding-left: 0;
+        }
+
+        .attack-plan li {
+            counter-increment: plan-counter;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        
+        .attack-plan li::before {
+            content: "0" counter(plan-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+        
+        .attack-plan li strong {
+            display: block;
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .toolkit-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-note {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        footer .contact-links a {
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blob"></div>
+    <div class="container">
+        <header>
+            <div class="logo">Abhishek Nair</div>
+            <div class="contact-links">
+                <a href="https://twitter.com/abhisheknaironx" target="_blank">X/Twitter</a>
+                <a href="https://www.linkedin.com/in/abhisheknair1" target="_blank">LinkedIn</a>
+                <a href="mailto:abhisheknaironline@gmail.com">Email</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>I ship <span id="typing-text">narrati</span></h1>
+                <p>A growth-obsessed builder who can ideate, execute, and scale the narrative for the AI-agent economy.</p>
+            </section>
+
+            <section class="section manifesto visible">
+                <h2 class="section-title">THE OBSESSION</h2>
+                <p>I started out deep in spreadsheets and VBA at Winman Softwares, automating tax logic for India's most popular CA suite. It was my first taste of shipping something that actually <strong>moved the needle</strong> for users. but I quickly realized that building great tools is only half the battle. You have to get them in front of people.</p>
+                <p>That itch led me to launch <strong>Code Samaaj</strong> and <strong>Growth Guild</strong>. I ran 10+ college seminars, built a 1,800-strong community, and went from cold-email pitches to packed rooms, all solo. I learned how to craft a narrative, <strong>own an audience</strong>, and turn attendees into evangelists.</p>
+                <div class="highlight-box">
+                    My core philosophy is simple: ship ugly fast, listen to the data, fix noisily, and double‑down on what works. That’s the “crackhead growth” mindset.
+                </div>
+            </section>
+
+            <section class="section visible">
+                <h2 class="section-title">GROWTH PROJECTS</h2>
+                <div class="grid-4-col">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="metric">20.5k+</div>
+                            <h3>X / Twitter Growth</h3>
+                            <p>Scaled my personal X handle from 0 to over 20,500 followers in ~12 months through relentless content sprints.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://x.com/abhisheknaironx" target="_blank">View on X</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="metric">1.8k+</div>
+                            <h3>Code Samaaj</h3>
+                            <p>Founded a dev community of 1,800+ members. Acquired users via 10+ solo-run college seminars &amp; workshops.</p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://codesamaaj.com" target="_blank">Website</a>
+                            <a href="https://x.com/codesamaaj" target="_blank">X/Twitter</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="metric">1.8k+</div>
+                            <h3>Typewreck</h3>
+                            <p>Shipped a typing game MVP in 2 days. Scaled to 1,800+ game sessions with $0 ad spend via organic community-led loops.</p>
+                        </div>
+                        <div class="project-links">
+                             <a href="https://typewreck.com" target="_blank">Website</a>
+                            <a href="https://x.com/playtypewreck" target="_blank">X/Twitter</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="metric">~1k</div>
+                            <h3>Growth Guild</h3>
+                            <p>A system &amp; community helping mid-level devs build visibility and break out of anonymity via challenges &amp; content hooks.</p>
+                        </div>
+                        <div class="project-links">
+                           <a href="https://growthguild.xyz" target="_blank">Website</a>
+                           <a href="https://x.com/joingrowthguild" target="_blank">X/Twitter</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section visible">
+                <h2 class="section-title">THE GRIND</h2>
+                <div class="grid-2-col">
+                    <div class="career-card card">
+                        <div class="company">
+                            <h3>Founder</h3>
+                            <span class="date">May 2024 - Present</span>
+                        </div>
+                        <p style="color: var(--text); margin-bottom: 15px;">Code Samaaj</p>
+                        <ul>
+                            <li>Managing 1800+ members, helping devs get hired and companies find talent.</li>
+                            <li>Building the entire growth engine from content to community management.</li>
+                            <li>1000+ students impacted with 10+ seminars and 2 multi-day bootcamps.</li>
+                            <li>Partnership with universities and colleges to run seminars and bootcamps.</li>
+                        </ul>
+                    </div>
+                    <div class="career-card card">
+                         <div class="company">
+                             <h3>Assistant Software Developer</h3>
+                             <span class="date">Sep 2022 - May 2024</span>
+                        </div>
+                        <p style="color: var(--text); margin-bottom: 15px;">Winman Software India LLP</p>
+                        <ul>
+                            <li>Took part in building the most popular CA suite in SouthIndia.</li>
+                            <li>Promoted to product dev team in 90 days, because of the ability to translate business requirements into technical solutions.</li>
+                            <li>Automated complex tax logic with VBA, reducing manual processing time.</li>
+                            <li>Contributed to enhancing core software speed by 25% via optimizations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section visible">
+                <h2 class="section-title">THE CAPX PLAN</h2>
+                <div class="attack-plan">
+                    <ol>
+                        <li><strong>Show, Don't Tell</strong> Leverage my dev background to create dead-simple content showing how easy it is to build an agent on Capx.</li>
+                        <li><strong>Build The Narrative</strong> Hammer home the "true ownership" angle. Why build somewhere else when you can own your upside here?</li>
+                        <li><strong>Spotlight The Winners</strong> Find the best agents and builders on the platform and make them famous. User success is our best marketing.</li>
+                        <li><strong>Amplify Everything</strong> Be loud. Meme tests, narrative threads, spotlight agents, trend-jacking, and creator collabs. Total saturation.</li>
+                        <li><strong>Scale with AI</strong> Use AI to 10x the winning strategies—from video explainers to live demos and tutorials.</li>
+                        <li><strong>Build Culture on X</strong> Make the Capx Twitter account the undeniable center of the AI agent economy.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="section visible">
+                <h2 class="section-title">TOOLKIT</h2>
+                <div class="toolkit-container">
+                    <span class="skill-tag">Content-First Growth (X)</span>
+                    <span class="skill-tag">Positioning &amp; Storytelling</span>
+                    <span class="skill-tag">Community Building</span>
+                    <span class="skill-tag">Rapid Ideation → Execution</span>
+                    <span class="skill-tag">Growth Hacking</span>
+                    <span class="skill-tag">AI Automation</span>
+                    <span class="skill-tag">AI Maximalist</span>
+                    <span class="skill-tag">Strong Meme Game</span>
+                    <span class="skill-tag">Public Speaking</span>
+                    <span class="skill-tag">Trend-jacking</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Ready to build.</p>
+            <div class="contact-links">
+                <a href="https://twitter.com/abhisheknaironx" target="_blank">X/Twitter</a>
+                <a href="https://www.linkedin.com/in/abhisheknair1" target="_blank">LinkedIn</a>
+                <a href="mailto:abhisheknaironline@gmail.com">Email</a>
+                <a href="https://t.me/Myselfnair" target="_blank">Telegram</a>
+            </div>
+            <p class="footer-note">Built for Capx. This is how fast I ship.</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- CURSOR BLOB EFFECT ---
+        const blob = document.querySelector('.blob');
+        window.addEventListener('pointermove', (event) => {
+            const { clientX, clientY } = event;
+            blob.animate({
+                left: `${clientX}px`,
+                top: `${clientY}px`
+            }, { duration: 3000, fill: "forwards" });
+        });
+
+        // --- TYPING EFFECT ---
+        const typingTextElement = document.getElementById('typing-text');
+        const phrases = ["growth.", "communities.", "narratives.", "value."];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex--);
+            } else {
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex++);
+            }
+
+            let typeSpeed = isDeleting ? 75 : 150;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- SCROLL REVEAL EFFECT ---
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    </script>
+
+</body></html>
