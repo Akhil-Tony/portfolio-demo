@@ -1,7 +1,7 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Nair - Growth for Capx.ai</title>
+    <title>AKHILTONY.COM</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -141,6 +141,23 @@
         
         .section-title::before {
             content: "// ";
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         .manifesto p {
@@ -326,13 +343,99 @@
             font-size: 1rem;
         }
 
+        /* Styles for the new form section */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form input[type="tel"],
+        .contact-form textarea {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .contact-form button {
+            background-color: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #3023AE;
+        }
+        
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .form-message.success {
+            background-color: #28a745;
+            color: #fff;
+        }
+        
+        .form-message.error {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        
+        .grid-2-col-contact {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .grid-2-col-contact {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="blob"></div>
     <div class="container">
         <header>
-            <div class="logo">Abhishek Nair</div>
+            <div class="logo">AKHILTONY.COM</div>
             <div class="contact-links">
                 <a href="https://twitter.com/abhisheknaironx" target="_blank">X/Twitter</a>
                 <a href="https://www.linkedin.com/in/abhisheknair1" target="_blank">LinkedIn</a>
@@ -342,110 +445,120 @@
 
         <main>
             <section class="hero">
-                <h1>I ship <span id="typing-text">narrati</span></h1>
-                <p>A growth-obsessed builder who can ideate, execute, and scale the narrative for the AI-agent economy.</p>
+                <h1>Automate <span id="typing-text"></span></h1>
+                <p>A visionary entrepreneur who leverages AI to build autopilot businesses and scale new ventures.</p>
+            </section>
+            
+            <section class="section visible">
+                <h2 class="section-title">VIDEO SALES LETTER</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/B0p5SdkBydU?autoplay=1&mute=1&controls=0&modestbranding=1" title="Empty Your Mind - a powerful Motivational Story for your Life | Wordy Tales" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                </div>
             </section>
 
             <section class="section manifesto visible">
-                <h2 class="section-title">THE OBSESSION</h2>
-                <p>I started out deep in spreadsheets and VBA at Winman Softwares, automating tax logic for India's most popular CA suite. It was my first taste of shipping something that actually <strong>moved the needle</strong> for users. but I quickly realized that building great tools is only half the battle. You have to get them in front of people.</p>
-                <p>That itch led me to launch <strong>Code Samaaj</strong> and <strong>Growth Guild</strong>. I ran 10+ college seminars, built a 1,800-strong community, and went from cold-email pitches to packed rooms, all solo. I learned how to craft a narrative, <strong>own an audience</strong>, and turn attendees into evangelists.</p>
+                <h2 class="section-title">THE REVOLUTION</h2>
+                <p>We are in the midst of a revolution. A.I is the ultimate catalyst for making money faster and with less effort. This is no longer a choice; it's an inevitability. If you wait, your competitors will adapt to AI, reduce their operational costs, and out-compete you by selling to a wider customer base for a lower price. Human work is limited, but A.I. has no limits.</p>
                 <div class="highlight-box">
-                    My core philosophy is simple: ship ugly fast, listen to the data, fix noisily, and double‑down on what works. That’s the “crackhead growth” mindset.
+                    The new paradigm of business is not about working harder, but about building smarter. It's about creating systems that work for you, not the other way around.
                 </div>
             </section>
 
             <section class="section visible">
-                <h2 class="section-title">GROWTH PROJECTS</h2>
+                <h2 class="section-title">MY AUTOPILOT VENTURES</h2>
                 <div class="grid-4-col">
                     <div class="card">
                         <div class="card-content">
-                            <div class="metric">20.5k+</div>
-                            <h3>X / Twitter Growth</h3>
-                            <p>Scaled my personal X handle from 0 to over 20,500 followers in ~12 months through relentless content sprints.</p>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://x.com/abhisheknaironx" target="_blank">View on X</a>
+                            <div class="metric">10x</div>
+                            <h3>Automated Content Machine</h3>
+                            <p>Developed an AI-powered content creation pipeline that generates blog posts, social media updates, and video scripts, scaling content output by 10x with minimal human oversight.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
-                            <div class="metric">1.8k+</div>
-                            <h3>Code Samaaj</h3>
-                            <p>Founded a dev community of 1,800+ members. Acquired users via 10+ solo-run college seminars &amp; workshops.</p>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://codesamaaj.com" target="_blank">Website</a>
-                            <a href="https://x.com/codesamaaj" target="_blank">X/Twitter</a>
+                            <div class="metric">75%</div>
+                            <h3>Chatbot Sales Funnel</h3>
+                            <p>Implemented a custom AI chatbot that handles inbound leads, qualifies prospects, and automates follow-ups, reducing the manual sales workload by 75%.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
-                            <div class="metric">1.8k+</div>
-                            <h3>Typewreck</h3>
-                            <p>Shipped a typing game MVP in 2 days. Scaled to 1,800+ game sessions with $0 ad spend via organic community-led loops.</p>
-                        </div>
-                        <div class="project-links">
-                             <a href="https://typewreck.com" target="_blank">Website</a>
-                            <a href="https://x.com/playtypewreck" target="_blank">X/Twitter</a>
+                            <div class="metric">50k+</div>
+                            <h3>AI-Driven Newsletter</h3>
+                            <p>Launched a fully automated newsletter that curates industry news and writes original summaries, growing the subscriber base to over 50,000 with a 40% open rate.</p>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
-                            <div class="metric">~1k</div>
-                            <h3>Growth Guild</h3>
-                            <p>A system &amp; community helping mid-level devs build visibility and break out of anonymity via challenges &amp; content hooks.</p>
-                        </div>
-                        <div class="project-links">
-                           <a href="https://growthguild.xyz" target="_blank">Website</a>
-                           <a href="https://x.com/joingrowthguild" target="_blank">X/Twitter</a>
+                            <div class="metric">50%</div>
+                            <h3>E-commerce Automation</h3>
+                            <p>Built a business that uses AI for inventory management, customer support, and order processing, achieving a 50% reduction in operational costs.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
             <section class="section visible">
-                <h2 class="section-title">THE GRIND</h2>
+                <h2 class="section-title">MY JOURNEY</h2>
                 <div class="grid-2-col">
                     <div class="career-card card">
                         <div class="company">
-                            <h3>Founder</h3>
-                            <span class="date">May 2024 - Present</span>
+                            <h3>A.I. Engineer</h3>
+                            <span class="date">2024 - Present</span>
                         </div>
-                        <p style="color: var(--text); margin-bottom: 15px;">Code Samaaj</p>
+                        <p style="color: var(--text); margin-bottom: 15px;">Samsung</p>
                         <ul>
-                            <li>Managing 1800+ members, helping devs get hired and companies find talent.</li>
-                            <li>Building the entire growth engine from content to community management.</li>
-                            <li>1000+ students impacted with 10+ seminars and 2 multi-day bootcamps.</li>
-                            <li>Partnership with universities and colleges to run seminars and bootcamps.</li>
+                            <li>Engineered and deployed AI solutions to automate the electromechanic section, significantly enhancing productivity and accuracy.</li>
+                            <li>Applied machine learning models to optimize maintenance schedules and predict component failures.</li>
                         </ul>
                     </div>
                     <div class="career-card card">
                          <div class="company">
-                             <h3>Assistant Software Developer</h3>
-                             <span class="date">Sep 2022 - May 2024</span>
+                             <h3>Youngest Cannabis Entrepreneur of India</h3>
+                             <span class="date">2022 - Present</span>
                         </div>
-                        <p style="color: var(--text); margin-bottom: 15px;">Winman Software India LLP</p>
+                        <p style="color: var(--text); margin-bottom: 15px;">Cannabis Ventures</p>
                         <ul>
-                            <li>Took part in building the most popular CA suite in SouthIndia.</li>
-                            <li>Promoted to product dev team in 90 days, because of the ability to translate business requirements into technical solutions.</li>
-                            <li>Automated complex tax logic with VBA, reducing manual processing time.</li>
-                            <li>Contributed to enhancing core software speed by 25% via optimizations.</li>
+                            <li>Pioneered a venture in the emerging cannabis industry in India.</li>
+                            <li>Focused on legal compliance, market strategy, and brand development in a complex regulatory landscape.</li>
+                        </ul>
+                    </div>
+                    <div class="career-card card">
+                        <div class="company">
+                            <h3>Founder & AI Strategist</h3>
+                            <span class="date">2023 - Present</span>
+                        </div>
+                        <p style="color: var(--text); margin-bottom: 15px;">Autopilot Ventures</p>
+                        <ul>
+                            <li>Founded and scaled multiple AI-driven businesses from ideation to full automation.</li>
+                            <li>Specialized in creating and deploying AI models for business growth and efficiency.</li>
+                            <li>Mentored entrepreneurs on integrating AI into their core business processes.</li>
+                        </ul>
+                    </div>
+                    <div class="career-card card">
+                         <div class="company">
+                             <h3>Automation Consultant</h3>
+                             <span class="date">2021 - 2023</span>
+                        </div>
+                        <p style="color: var(--text); margin-bottom: 15px;">Innovate Tech Solutions</p>
+                        <ul>
+                            <li>Helped clients automate complex workflows using AI and no-code tools, increasing productivity by an average of 30%.</li>
+                            <li>Designed and implemented custom chatbot solutions for customer service and sales.</li>
+                            <li>Trained teams on the strategic use of AI to solve business problems.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
             <section class="section visible">
-                <h2 class="section-title">THE CAPX PLAN</h2>
+                <h2 class="section-title">THE AUTOPILOT BUSINESS PLAN</h2>
                 <div class="attack-plan">
                     <ol>
-                        <li><strong>Show, Don't Tell</strong> Leverage my dev background to create dead-simple content showing how easy it is to build an agent on Capx.</li>
-                        <li><strong>Build The Narrative</strong> Hammer home the "true ownership" angle. Why build somewhere else when you can own your upside here?</li>
-                        <li><strong>Spotlight The Winners</strong> Find the best agents and builders on the platform and make them famous. User success is our best marketing.</li>
-                        <li><strong>Amplify Everything</strong> Be loud. Meme tests, narrative threads, spotlight agents, trend-jacking, and creator collabs. Total saturation.</li>
-                        <li><strong>Scale with AI</strong> Use AI to 10x the winning strategies—from video explainers to live demos and tutorials.</li>
-                        <li><strong>Build Culture on X</strong> Make the Capx Twitter account the undeniable center of the AI agent economy.</li>
+                        <li><strong>Identify The Problem</strong> Find a repetitive, human-driven process that can be solved with AI.</li>
+                        <li><strong>Build The Engine</strong> Create an automated system using AI tools to handle the core task.</li>
+                        <li><strong>Launch & Optimize</strong> Ship the product fast, collect data, and use AI to continuously refine the process.</li>
+                        <li><strong>Scale & Reinvest</strong> Automate marketing, sales, and support to achieve a fully autonomous business model.</li>
+                        <li><strong>Innovate Further</strong> Leverage the freed-up time and resources to build the next autopilot venture.</li>
                     </ol>
                 </div>
             </section>
@@ -453,29 +566,55 @@
             <section class="section visible">
                 <h2 class="section-title">TOOLKIT</h2>
                 <div class="toolkit-container">
-                    <span class="skill-tag">Content-First Growth (X)</span>
-                    <span class="skill-tag">Positioning &amp; Storytelling</span>
-                    <span class="skill-tag">Community Building</span>
-                    <span class="skill-tag">Rapid Ideation → Execution</span>
-                    <span class="skill-tag">Growth Hacking</span>
                     <span class="skill-tag">AI Automation</span>
-                    <span class="skill-tag">AI Maximalist</span>
-                    <span class="skill-tag">Strong Meme Game</span>
-                    <span class="skill-tag">Public Speaking</span>
-                    <span class="skill-tag">Trend-jacking</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">No-Code Automation (n8n)</span>
+                    <span class="skill-tag">SaaS Business Models</span>
+                    <span class="skill-tag">Content Automation</span>
+                    <span class="skill-tag">AI-Powered Sales</span>
+                    <span class="skill-tag">Visionary Leadership</span>
+                    <span class="skill-tag">Chatbot Development</span>
+                    <span class="skill-tag">Systems Thinking</span>
+                    <span class="skill-tag">Trend Analysis</span>
                 </div>
+            </section>
+
+            <section class="section visible">
+                <h2 class="section-title">CONTACT</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="grid-2-col-contact">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
+                </form>
             </section>
         </main>
 
         <footer>
-            <p>Ready to build.</p>
+            <p>Ready to build the future.</p>
             <div class="contact-links">
                 <a href="https://twitter.com/abhisheknaironx" target="_blank">X/Twitter</a>
                 <a href="https://www.linkedin.com/in/abhisheknair1" target="_blank">LinkedIn</a>
                 <a href="mailto:abhisheknaironline@gmail.com">Email</a>
                 <a href="https://t.me/Myselfnair" target="_blank">Telegram</a>
             </div>
-            <p class="footer-note">Built for Capx. This is how fast I ship.</p>
+            <p class="footer-note">The future is automated.</p>
         </footer>
     </div>
 
@@ -492,7 +631,7 @@
 
         // --- TYPING EFFECT ---
         const typingTextElement = document.getElementById('typing-text');
-        const phrases = ["growth.", "communities.", "narratives.", "value."];
+        const phrases = ["Content Creation", "Sales Funnel", "Story Telling"];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -539,6 +678,41 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+        
+        // --- FORM SUBMISSION WITH FETCH API ---
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('https://n8n-6421994137235212.kloudbeansite.com/webhook-test/Portfolio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                
+                if (response.ok) {
+                    formMessage.textContent = 'Message received successfully!';
+                    formMessage.className = 'form-message success';
+                    contactForm.reset();
+                } else {
+                    formMessage.textContent = 'An error occurred. Please try again.';
+                    formMessage.className = 'form-message error';
+                }
+            } catch (error) {
+                formMessage.textContent = 'Network error. Please check your connection.';
+                formMessage.className = 'form-message error';
+            }
+            
+            formMessage.style.display = 'block';
         });
 
     </script>
