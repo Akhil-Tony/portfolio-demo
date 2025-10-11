@@ -140,7 +140,52 @@
         }
         
         .section-title::before {
-            content: "// ";
+            content: '';
+        }
+
+        /* Special styling for THE THREE POWER STONES heading */
+        .section-title.power-stones {
+            font-size: clamp(1.5rem, 4vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            background: linear-gradient(90deg, #4A90E2, #3023AE);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* gradient text */
+            position: relative;
+            margin-bottom: 24px;
+            animation: ps-entrance 700ms cubic-bezier(.2,.9,.2,1) both;
+        }
+
+        .section-title.power-stones::before {
+            color: rgba(74,144,226,0.9);
+            font-weight: 600;
+        }
+
+        /* remove the default '//' for the power-stones heading */
+        .section-title.power-stones::before { content: ''; }
+
+        .section-title.power-stones::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 64px;
+            height: 4px;
+            border-radius: 3px;
+            background: rgba(74,144,226,0.22);
+            box-shadow: 0 8px 22px rgba(74,144,226,0.08);
+            pointer-events: none;
+        }
+
+        @keyframes ps-entrance {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .section-title.power-stones { animation: none; }
         }
         
         .video-container {
@@ -217,7 +262,7 @@
         }
         
         .card .metric {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 10px;
@@ -226,6 +271,16 @@
         .card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        /* Ensure images inside cards fit and stay crisp */
+        .card img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 12px;
+            border-radius: 6px;
         }
         
         .project-links {
@@ -444,13 +499,14 @@
         </header>
 
         <main>
+
             <section class="hero">
                 <h1>Automate <span id="typing-text"></span></h1>
-                <p>A visionary entrepreneur who leverages AI to build autopilot businesses and scale new ventures.</p>
+                <p>I build AI-powered systems that help solopreneurs run their businesses on autopilot and scale new ventures.</p>
+                <br><br>
             </section>
-            
-            <section class="section visible">
-                <h2 class="section-title">VIDEO SALES LETTER</h2>
+
+             <section class="section visible">
                 <div class="video-container">
             <iframe 
                 src="https://www.youtube.com/embed/y34QOt4pbOc?autoplay=1&mute=1&controls=0&modestbranding=1" 
@@ -462,11 +518,38 @@
                 </div>
             </section>
 
+
             <section class="section manifesto visible">
-                <h2 class="section-title">THE REVOLUTION</h2>
+                <h2 class="section-title">THE REVOLUTION IS COMING...</h2>
                 <p>We are in the midst of a revolution. A.I is the ultimate catalyst for making money faster and with less effort. This is no longer a choice; it's an inevitability. If you wait, your competitors will adapt to AI, reduce their operational costs, and out-compete you by selling to a wider customer base for a lower price. Human work is limited, but A.I. has no limits.</p>
-                <div class="highlight-box">
-                    The new paradigm of business is not about working harder, but about building smarter. It's about creating systems that work for you, not the other way around.
+            </section>
+
+            <!-- New visible heading: THE THREE POWER STONES -->
+            <section class="section visible">
+                <h2 class="section-title" align="center">THE A.I REVOLUTION IS COMING...YOU NEED</h2>
+                <h1 class="section-title power-stones" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e031,#fff45b,#fd0505); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">THE THREE POWER STONES</h1>
+                <div class="grid-4-col">
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/2_j3kpw0.png" alt="Knowledge Brain">
+                            <h3>Knowledge Brain</h3>
+                            <p>The core intelligence of your business. It learns from your data, analyzes patterns, and provides actionable insights — essentially giving your business a supercharged, always-on brain that makes smarter decisions, faster.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/1_opldwc.png" alt="Automation System">
+                            <h3>Automation System</h3>
+                            <p>Handles repetitive tasks, workflows, and operations on autopilot. From lead management to customer follow-ups, it ensures your business runs smoothly 24/7 without human intervention, saving time and boosting productivity.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/3_gm1yxr.png" alt="Admin Panel">
+                            <h3>Admin Dashboard</h3>
+                            <p>Gives you complete control and visibility over your AI ecosystem. Monitor performance, track metrics, and make strategic decisions — all from a single, easy-to-use interface. Your business intelligence, simplified.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -637,7 +720,7 @@
 
         // --- TYPING EFFECT ---
         const typingTextElement = document.getElementById('typing-text');
-        const phrases = ["Content Creation", "Sales Funnel", "Story Telling"];
+        const phrases = ["Story Telling", "Lead Magnets", "Sales Funnel"];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -724,5 +807,3 @@
     </script>
 
 </body></html>
-
-
