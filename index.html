@@ -228,7 +228,16 @@
            - Keeps story layout/typography/colors for components
            - But background blends with main page (transparent)
         ===========================================*/
-        .story-block { margin: 40px auto 0; }
+        .story-block {
+            margin: 40px auto 0;
+            /* Break out of the main container so story can be wider without affecting other sections */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+        }
         /* Story variables (scoped) */
         .story-block {
             --story-bg: transparent;                     /* blend with main */
@@ -238,7 +247,7 @@
             --story-green: #1fa35a;
             --story-glass: rgba(255,255,255,0.03);
             --story-radius: 18px;
-            --story-maxw: 960px;
+            --story-maxw: 1200px;
             --story-ff: 'Segoe UI', Roboto, system-ui, sans-serif; /* story font */
             --story-text: #E6EEF5;
         }
@@ -728,5 +737,3 @@
     </script>
 </body>
 </html>
-
-
