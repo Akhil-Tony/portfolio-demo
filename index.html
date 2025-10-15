@@ -287,7 +287,16 @@
             border-radius: 18px; overflow: hidden; background: #000;
             box-shadow: inset 0 -40px 80px rgba(0,0,0,0.4);
         }
-        .story-block .media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .story-block .media img { display: block; width: 100%; height: auto; object-fit: cover; }
+
+        /* Show full image in Samsung media (no crop) */
+        #samsung .media img {
+            object-fit: contain !important;
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000; /* keep same bg as media */
+        }
 
         /* Story sections */
         .story-block section.story {
@@ -427,24 +436,21 @@
             ==================================== -->
             <section class="story-block">
                 <div class="wrap">
-                    <header class="hero">
-                        <div class="card reveal">
-                            <span class="tagline">Akhil Tony — AI Engineer & Hemp Innovator</span>
-                            <h1>From late-night coding to building self-running businesses (and a little hemp magic)</h1>
-                            <p class="subtitle">Part memoir, part manifesto — tech meets nature, with jokes sprinkled like semicolons.</p>
-                            <p class="lead">This is a playful, honest run-through of how I learned to make machines think, joined Samsung to push AI further, then decided to build businesses that honor nature — especially hemp — so people can reclaim consciousness while tech handles the grind.</p>
-                            <div class="funny"><strong>Joke:</strong> I started debugging my life before I debugged code — stack traces are surprisingly helpful for relationships.</div>
-                            <div style="margin-top:12px" class="cta">
-                                <button class="btn" onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'})">Read my journey</button>
-                                <button class="btn ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
-                            </div>
-                        </div>
-                        <aside class="media reveal">
-                            <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1751895564/IMAGES%20A.I%20GENERATED/ZTdRWmYTal9z_DkEKISnO_c0ef87147ec64cc383fccac74c846f5e_xcgu2y.jpg" alt="Akhil portrait">
-                        </aside>
-                    </header>
-
                     <main>
+                        <section id="intro" class="story reveal">
+                            <h2>From late-night coding to building self-running businesses (and a little hemp magic)</h2>
+                            <div class="grid">
+                                <div class="card small">
+                                    <p class="lead">This is a playful, honest run-through of how I learned to make machines think, joined Samsung to push AI further, then decided to build businesses that honor nature — especially hemp — so people can reclaim consciousness while tech handles the grind.</p>
+                                    <p>Part memoir, part manifesto — tech meets nature, with jokes sprinkled like semicolons.</p>
+                                    <div class="funny"><strong>Joke:</strong> I started debugging my life before I debugged code — stack traces are surprisingly helpful for relationships.</div>
+                                </div>
+                                <div class="card small">
+                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1751895564/IMAGES%20A.I%20GENERATED/ZTdRWmYTal9z_DkEKISnO_c0ef87147ec64cc383fccac74c846f5e_xcgu2y.jpg" alt="Akhil portrait" style="width:100%; border-radius:12px;">
+                                </div>
+                            </div>
+                        </section>
+
                         <section id="journey" class="story reveal">
                             <h2>How I started programming — curious, caffeinated, night owl</h2>
                             <div class="grid">
@@ -455,7 +461,7 @@
                                 </div>
                                 <div class="card small">
                                     <div class="video-wrap">
-                                        <video controls poster="https://via.placeholder.com/900x500?text=Placeholder+Video+for+Coding+Journey">
+                                        <video controls preload="metadata" poster="https://via.placeholder.com/900x500?text=Placeholder+Video+for+Coding+Journey">
                                             <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.mp4" type="video/mp4">
                                         </video>
                                     </div>
@@ -516,7 +522,7 @@
                                     <div class="funny"><strong>Joke:</strong> My students say I debug their thinking patterns before their code. I say that’s version control for the mind.</div>
                                 </div>
                                 <div class="card small media">
-                                    <video src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760386140/workshops_video_drn0mc.mp4" controls muted loop style="width:100%; border-radius:12px;"></video>
+                                    <video src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760386140/workshops_video_drn0mc.mp4" controls muted loop preload="metadata" style="width:100%; border-radius:12px;"></video>
                                 </div>
                             </div>
                         </section>
@@ -565,18 +571,6 @@
                             <p class="lead">Machines replaced muscles. Now they're taking on minds. It's time for humans to expand where machines can't — meaning, the inner world.</p>
                             <p>Nature holds mysteries — and one of them is cannabis as a tool for expanding consciousness. I don't claim magic; I claim careful study, respect, and ethical use. My work sits at that intersection: rigorous tech + rooted nature.</p>
                             <div class="funny">Want to co-create a self-running business? Or just swap terrible coding jokes? I'm in.</div>
-                        </section>
-
-                        <section id="contact" class="story reveal">
-                            <h2>Contact & next steps</h2>
-                            <p class="lead">Name: <strong>Akhil Tony</strong></p>
-                            <p>Title shown: <em>AI engineer creating systems to do self-running business like whatever he likes, like hemp.</em></p>
-                            <p>Ready-made actions:</p>
-                            <ul>
-                                <li>Replace placeholder images with your photos.</li>
-                                <li>Replace sample video with your clip.</li>
-                                <li>Customize the jokes or tone in the <code>.funny</code> blocks.</li>
-                            </ul>
                         </section>
                     </main>
 
@@ -638,7 +632,7 @@
 
         // --- TYPING EFFECT ---
         const typingTextElement = document.getElementById('typing-text');
-        const phrases = ["Story Telling", "Lead Magnets", "Sales Funnel"];
+        const phrases = ["Story Telling", "Personal Branding", "Sales Funnels"];
         let phraseIndex = 0, charIndex = 0, isDeleting = false;
 
         function type() {
@@ -710,9 +704,9 @@
             document.querySelectorAll('.story-block .reveal').forEach(el => io.observe(el));
         })();
 
-        // Subtle parallax for first hero image inside story block
+        // Subtle parallax for a designated hero image only (opt-in via class)
         (function(){
-            const img = document.querySelector('.story-block .media img');
+            const img = document.querySelector('.story-block .media.hero-parallax img');
             if (!img) return;
             window.addEventListener('scroll', () => {
                 const s = window.scrollY / 30;
