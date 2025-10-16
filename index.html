@@ -191,6 +191,12 @@
             display: block; max-width: 100%; height: auto; object-fit: contain;
             margin-bottom: 12px; border-radius: 6px;
         }
+        /* Power-stones readability helpers */
+        .card .subtext { font-style: italic; color: var(--text-muted); margin-bottom: 8px; }
+        .card h4 { font-size: 0.95rem; font-weight: 600; margin: 10px 0 6px; color: var(--text); }
+    .card ul.feature-list { list-style: disc; margin: 6px 0 0 18px; color: var(--text-muted); font-size: 0.95rem; }
+    .card ul.feature-list li { margin: 4px 0; color: inherit; }
+        .card .tip { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 12px; margin-top: 10px; color: var(--text-muted); }
 
         footer {
             text-align: center;
@@ -397,7 +403,7 @@
 
             <!-- ===== MANIFESTO ===== -->
             <section class="section manifesto visible">
-                <h2 class="section-title">THE REVOLUTION IS COMING...</h2>
+                <h2 class="section-title">WHY YOU NEED THREE POWER STONES</h2>
                 <p>In the AGRICULTURAL REVOLUTION people who could generate and store food were the key players. So land owners became rich. 
                 <br>In the INDUSTRIAL REVOLUTION machines replaced man power. production scaled massively. Machine and factory owners became rich
                 <br>In the INTERNET REVOLUTION information became power, tech owners became rich
@@ -412,35 +418,53 @@
 
             <!-- ===== POWER STONES ===== -->
             <section class="section visible">
-                <h2 class="section-title" align="center">THE A.I REVOLUTION IS COMING...YOU NEED</h2>
+                <h2 class="section-title" align="center">IN THIS A.I REVOLUTION TO BECOME UNSTOPPABLE YOU NEED</h2>
                 <h1 class="section-title power-stones" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e031,#fff45b,#fd0505); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">THE THREE POWER STONES</h1>
                 <div class="grid-4-col">
                     <div class="card">
                         <div class="card-content">
                             <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/2_j3kpw0.png" alt="Knowledge Brain">
                             <h3>1. Knowledge Brain</h3>
-                            <p>The core intelligence of your business. It learns from your data, analyzes patterns, and provides actionable insights — essentially giving your business a supercharged, always-on brain that makes smarter decisions, faster.</p>
+                            <p>💡The Mind to understand and remember</p>
+                            <h4>Purpose</h4>
+                            <p>To act as the living memory of the business — connecting data, knowledge, and context through RAG and knowledge graphs, enabling intelligent understanding and reasoning across all operations.</p>
+                            <h4>Core Functions</h4>
+                            <ul class="feature-list">
+                                <li>Connect knowledge graphs to represent relationships (e.g., product → customer → feedback → revenue)</li>
+                                <li>Power personalized responses and decisions for each client, employee, or situation</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
                             <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/1_opldwc.png" alt="Automation System">
                             <h3>2. Automation System</h3>
-                            <p>Handles repetitive tasks, workflows, and operations on autopilot. From lead management to customer follow-ups, it ensures your business runs smoothly 24/7 without human intervention, saving time and boosting productivity.</p>
+                            <p>💡The Body to act and operate</p>
+                            <h4>Purpose</h4>
+                            <p>To translate intelligence into action — executing workflows and tasks through AI agents that operate autonomously, optimize processes, and deliver results without constant human input.</p>
+                            <h4>Core Functions</h4>
+                            <ul class="feature-list">
+                                <li>Manage AI agents with defined roles (e.g., sales agent, marketing agent, support agent)</li>
+                                <li>Run task-based workflows — automate follow-ups, schedule campaigns, generate reports</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-content">
                             <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760170671/3_gm1yxr.png" alt="Admin Panel">
                             <h3>3. Admin Dashboard</h3>
-                            <p>Gives you complete control and visibility over your AI ecosystem. Monitor performance, track metrics, and make strategic decisions — all from a single, easy-to-use interface. Your business intelligence, simplified.</p>
+                            <p>💡The Consciousness to observe and direct</p>
+                            <h4>Purpose</h4>
+                            <p>To give human control and awareness — visualizing the AI’s knowledge, actions, and outcomes while allowing intuitive oversight, tuning, and collaboration between humans and AI.</p>
+                            <h4>Core Functions</h4>
+                            <ul class="feature-list">
+                                <li>Offer analytics and insights (efficiency, ROI, prediction, customer patterns)</li>
+                                <li>Enable natural language control (e.g., “Show me what the sales AI did this week.”)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <!-- ===== MY STORY TITLE ===== -->
-            <h1 class="section-title mystory" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e084,#f206f2,#e6ee05); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">MY-STORY</h1>
 
             <!-- ===================================
                  INSERTED STORY BLOCK (SCOPED)
@@ -448,8 +472,11 @@
             <section class="story-block">
                 <div class="wrap">
                     <main>
+
+                        <h1 class="section-title mystory" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e084,#00ccff,#e6ee05); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">MY-STORY</h1>
+
                         <section id="intro" class="story reveal">
-                            <h2>From late-night coding to building self-running businesses (and a little hemp magic)</h2>
+                            <h2>From late-night coding to building self-running businesses (and a little cannabis magic)</h2>
                             <div class="grid">
                                 <div class="card small">
                                     <p class="lead">This is a playful, honest run-through of how I learned to make machines think, joined Samsung to push AI further, then decided to build businesses that honor nature — especially hemp — so people can reclaim consciousness while tech handles the grind.</p>
@@ -468,14 +495,12 @@
                                 <div class="card small">
                                     <p class="lead">Like many, it began with curiosity: what if the computer did the boring stuff for me? I was that kid who took apart toys and glued them back together. Then I found <strong>code</strong> — and the thrill of making something that didn’t exist a second before.</p>
                                     <p>First language: <em>too many</em>. First real project: a tiny game that crashed gloriously but taught me exceptions exist for a reason. Debugging taught patience — and that you can always blame the compiler when in doubt.</p>
-                                    <ul class="skills"><li>Python</li><li>JavaScript</li><li>ML basics</li><li>Systems thinking</li></ul>
+                                    <ul class="skills"><li>C++</li><li>Python</li><li>Neural Networks</li><li>Computer Vision</li><li>Robotics</li><li>Arduino</li></ul>
                                 </div>
-                                <div class="card small">
-                                    <div class="video-wrap">
-                                        <video controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.jpg">
-                                            <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
+                                <div class="card small media">
+                                    <video controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.jpg" style="width:100%; border-radius:12px;">
+                                        <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.mp4" type="video/mp4">
+                                    </video>
                                 </div>
                             </div>
                         </section>
