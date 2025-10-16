@@ -677,13 +677,13 @@
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
             try {
-                const response = await fetch('https://n8n-6421994137235212.kloudbeansite.com/webhook-test/Portfolio', {
+                const response = await fetch('https://n8n-6421994137235212.kloudbeansite.com/webhook/contactform', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
                 if (response.ok) {
-                    formMessage.textContent = 'Message received successfully!';
+                    formMessage.textContent = 'Message delivered successfully!';
                     formMessage.className = 'form-message success';
                     contactForm.reset();
                 } else {
