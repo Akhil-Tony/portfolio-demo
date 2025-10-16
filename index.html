@@ -148,6 +148,10 @@
         .video-container iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
+        .video-container video {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; border: 0; display: block;
+        }
 
         .manifesto p { font-size: 1.1rem; max-width: 800px; margin-bottom: 20px; }
         .manifesto strong { color: var(--text); font-weight: 500; }
@@ -228,7 +232,7 @@
            - Keeps story layout/typography/colors for components
            - But background blends with main page (transparent)
         ===========================================*/
-        .story-block {
+            .story-block {
             margin: 40px auto 0;
             /* Break out of the main container so story can be wider without affecting other sections */
             position: relative;
@@ -384,19 +388,16 @@
             <section class="section visible">
                 <h2 class="section-title">LET ME TELL YOU A SIMPLE TRUTH...</h2>
                 <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/y34QOt4pbOc?autoplay=1&mute=1&controls=0&modestbranding=1" 
-                        title="VIDEO SALES LETTER"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <video controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760622545/vsl_ksbo9h.jpg" title="VIDEO SALES LETTER">
+                        <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760622545/vsl_ksbo9h.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </section>
 
             <!-- ===== MANIFESTO ===== -->
             <section class="section manifesto visible">
-                <h2 class="section-title">THE NEW REVOLUTION IS COMING...</h2>
+                <h2 class="section-title">THE REVOLUTION IS COMING...</h2>
                 <p>In the AGRICULTURAL REVOLUTION people who could generate and store food were the key players. So land owners became rich. 
                 <br>In the INDUSTRIAL REVOLUTION machines replaced man power. production scaled massively. Machine and factory owners became rich
                 <br>In the INTERNET REVOLUTION information became power, tech owners became rich
@@ -411,7 +412,7 @@
 
             <!-- ===== POWER STONES ===== -->
             <section class="section visible">
-                <h2 class="section-title" align="center">THE A.I REVOLUTION IS HAPPENING...YOU NEED</h2>
+                <h2 class="section-title" align="center">THE A.I REVOLUTION IS COMING...YOU NEED</h2>
                 <h1 class="section-title power-stones" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e031,#fff45b,#fd0505); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">THE THREE POWER STONES</h1>
                 <div class="grid-4-col">
                     <div class="card">
@@ -471,7 +472,7 @@
                                 </div>
                                 <div class="card small">
                                     <div class="video-wrap">
-                                        <video controls preload="metadata" poster="https://via.placeholder.com/900x500?text=Placeholder+Video+for+Coding+Journey">
+                                        <video controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.jpg">
                                             <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760442618/programming_video_wyvevc.mp4" type="video/mp4">
                                         </video>
                                     </div>
@@ -515,7 +516,7 @@
                                     <p><strong>Brand values:</strong> transparency, sustainability, education.</p>
                                 </div>
                                 <div class="card small media">
-                                    <video controls playsinline preload="metadata" poster="https://via.placeholder.com/800x450?text=Hemp+video" aria-label="Hemp farm video">
+                                    <video controls playsinline preload="metadata" poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760388344/cannalogic_ad_fhjp3h.jpg" aria-label="Hemp farm video">
                                         <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760388344/cannalogic_ad_fhjp3h.mp4" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -532,7 +533,7 @@
                                     <div class="funny"><strong>Joke:</strong> My students say I debug their thinking patterns before their code. I say that’s version control for the mind.</div>
                                 </div>
                                 <div class="card small media">
-                                    <video src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760386140/workshops_video_drn0mc.mp4" controls muted loop preload="metadata" style="width:100%; border-radius:12px;"></video>
+                                    <video src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760386140/workshops_video_drn0mc.mp4" controls loop preload="metadata" style="width:100%; border-radius:12px;"></video>
                                 </div>
                             </div>
                         </section>
