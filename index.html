@@ -97,6 +97,18 @@
             max-width: 600px;
             margin: 20px auto 0;
         }
+        .hero .cta-row { display: flex; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+        .hero .cta-row a {
+            background-color: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        .hero .cta-row a:hover { background-color: #a4e8fb; transform: translateY(-1px); }
 
         .section {
             margin-bottom: 100px;
@@ -197,6 +209,59 @@
     .card ul.feature-list { list-style: disc; margin: 6px 0 0 18px; color: var(--text-muted); font-size: 0.95rem; }
     .card ul.feature-list li { margin: 4px 0; color: inherit; }
         .card .tip { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 12px; margin-top: 10px; color: var(--text-muted); }
+
+        /* My Services (full-bleed like story-block, with inner wrap) */
+        .my-services {
+            margin: 40px auto 0;
+            /* Break out of the main container so section can be wider without affecting others */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+        }
+        .my-services .wrap {
+            max-width: 1200px;
+            margin: 28px auto;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+        }
+        /* Two-column grid similar to story layout */
+        .my-services .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: center; }
+        @media (max-width:640px){ .my-services .grid { grid-template-columns: 1fr !important; } }
+        /* Match story-like skills styling inside my-services */
+        .my-services ul.skills { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+        .my-services ul.skills li { background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 10px; }
+        .my-services h2 { margin: 0 0 12px 0; color: whitesmoke; }
+        .my-services p.lead { color: var(--text-muted); margin: 0 0 10px; }
+    /* Logo + subheading styles for service cards */
+    .my-services .service-logo { width: 66px; height: 66px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; opacity: 0.95; }
+    .my-services .card h3 { margin: 0 0 6px 0; color: var(--text); font-size: 1.05rem; }
+    .my-services .card .subtext { color: var(--text-muted); margin: 0 0 10px; font-size: 0.92rem; font-style: normal; }
+        .my-services.reveal { opacity: 0; transform: translateY(24px) scale(.995); transition: all 650ms cubic-bezier(.2,.9,.3,1); }
+        .my-services.reveal.show { opacity: 1; transform: none; }
+
+        /* Vision callout (full-bleed like story/my-services, with inner wrap) */
+        .vision-callout {
+            margin: 40px auto 0;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+        }
+        .vision-callout .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+        }
 
         footer {
             text-align: center;
@@ -388,6 +453,11 @@
                 <h1>Automate <span id="typing-text"></span></h1>
                 <p>I build AI-powered systems that help solopreneurs run their businesses on autopilot and scale new ventures.</p>
                 <br><br>
+                <div class="cta-row">
+                    <a href="#contact">Contact Me</a>
+                    <a href="#my-services">My Services</a>
+                    <a href="#my-story">My Story</a>
+                </div>
             </section>
 
             <!-- ===== VSL ===== -->
@@ -469,7 +539,7 @@
             <!-- ===================================
                  INSERTED STORY BLOCK (SCOPED)
             ==================================== -->
-            <section class="story-block">
+            <section id="my-story" class="story-block">
                 <div class="wrap">
                     <main>
 
@@ -568,56 +638,65 @@
                             <p class="lead">I chose hemp because it’s a plant that has been misunderstood. Technology replaced physical labour long ago; now AI is replacing bits of our mental labour. That creates a choice: either be replaced, or evolve. I choose evolution.</p>
                             <p>Hemp, to me, is more than a product — it’s a doorway to conversations about consciousness, resilience, and reconnecting with nature. It helps people slow down and ask different questions — the kind machines can't yet answer.</p>
                         </section>
-
-                        <section id="ai-business" class="story reveal">
-                            <h2>What AI can do for businesses — short & sharp</h2>
-                            <div class="grid">
-                                <div class="card small">
-                                    <ul>
-                                        <li><strong>Automate routine:</strong> customer replies, inventory, supply-chain alerts.</li>
-                                        <li><strong>Personalize at scale:</strong> product recommendations and educational content matched to user readiness.</li>
-                                        <li><strong>Predict and optimize:</strong> demand forecasting, pricing A/B testing, and campaign ROI.</li>
-                                        <li><strong>Create assets:</strong> marketing copy, video ideas, product labels — faster.</li>
-                                    </ul>
-                                    <p class="lead">When combined, AI frees humans to focus on strategy, storytelling, and care — things machines can't genuinely feel (yet).</p>
-                                </div>
-                                <div class="card small">
-                                    <p><strong>Mini case:</strong> We built a chatbot that handled 60% of basic customer queries, letting the team handle deep consults. Sales rose; burnout dropped.</p>
-                                    <p class="funny"><strong>Joke:</strong> Let the bots handle the small talk — humans keep the deep tea sessions.</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section id="now" class="story reveal">
-                            <h2>What I'm capable of now — a practical flex (humble, but true)</h2>
-                            <div class="grid">
-                                <div class="card small">
-                                    <p class="lead">I design end-to-end systems: from data pipelines that feed models, to products that customers actually want. I build automation to make businesses run with minimal friction.</p>
-                                    <ul class="skills"><li>AI product design</li><li>ML pipelines & MLOps</li><li>Automation & integrations</li><li>Founder mindset</li></ul>
-                                </div>
-                                <div class="card small media">
-                                    <img src="https://via.placeholder.com/700x420?text=Work+setup+placeholder" alt="Work setup placeholder">
-                                </div>
-                            </div>
-                            <p style="margin-top:12px">My north star: build systems that let humans rise — spiritually, creatively, and in wellbeing — while machines handle the repeatable work.</p>
-                        </section>
-
-                        <section id="callout" class="story reveal" style="margin-top:18px">
-                            <h2>Vision — where tech and nature collide</h2>
-                            <p class="lead">Machines replaced muscles. Now they're taking on minds. It's time for humans to expand where machines can't — meaning, the inner world.</p>
-                            <p>Nature holds mysteries — and one of them is cannabis as a tool for expanding consciousness. I don't claim magic; I claim careful study, respect, and ethical use. My work sits at that intersection: rigorous tech + rooted nature.</p>
-                            <div class="funny">Want to co-create a self-running business? Or just swap terrible coding jokes? I'm in.</div>
-                        </section>
                     </main>
 
-                    <footer class="reveal"><p>Made with curiosity — code, plants & a dash of rebellion. © Akhil Tony</p></footer>
                 </div>
             </section>
             <!-- ===== END STORY BLOCK ===== -->
 
+            <!-- ===== MY SERVICES (before contact, full-bleed with inner wrap) ===== -->
+                <section id="my-services" class="my-services reveal">
+                    <h1 class="section-title mystory" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#da840b,#f8ec05,#e6ee05); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(251, 251, 251, 0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">MY-SERVICES</h1>
+                    <div class="wrap">
+                        <h2>What I'm capable of now — a practical flex</h2>
+                        <div class="grid">
+                            <div class="card small">
+                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/ai_consultant_mlygwb.png" alt="AI Product Design logo">
+                                <h3>AI Consultant & Builder, New Company</h3>
+                                <p class="subtext">Automation Services</p>
+                                <p class="lead">I can help you build intelligent systems that give back your time and freedom.</p>
+                                <ul class="skills"><li>AI product design</li><li>Data Pipelines</li><li>Custom Integrations</li></ul>
+                            </div>
+                            <div class="card small">
+                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/ecoherb_phdn9m.png" alt="Automation Systems logo">
+                                <h3>Managing Director, Ecoherb Health and Ayur Pvt Ltd</h3>
+                                <p class="subtext">Ayurvedic Drug Manufacturing Company</p>
+                                <p class="lead">I can help you build custom Ayurvedic Medicines, legal documentation work or help with product whitelabeling services.</p>
+                                <ul class="skills"><li>Nutritional Products</li><li>Generic Medicines</li><li>Scheduled E1 Drugs</li></ul>
+                            </div>
+                            <div class="card small" style="cursor:pointer" title="Open Cannalogic in a new tab" role="link" tabindex="0" onclick="window.open('https://www.cannalogic.in','_blank')" onkeydown="if(event.key==='Enter'||event.keyCode===13){window.open('https://www.cannalogic.in','_blank')}">
+                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/cannalogic_1_uwgjys.png" alt="Data & MLOps logo">
+                                <h3>Co-founder, Cannalogic</h3>
+                                <p class="subtext">Leading Medical Cannabis Brand</p>
+                                <p class="lead">I can help you to heal your body, mind and spirit with help of the sacred plant Cannabis.</p>
+                                <ul class="skills"><li>Doctor Consulation</li><li>Cannabis Products</li><li>Affiliate Marketing</li></ul>
+                            </div>
+                            <div class="card small" style="cursor:pointer" title="Open Codesamaaj in a new tab" role="link" tabindex="0" onclick="window.open('https://www.codesamaaj.com','_blank')" onkeydown="if(event.key==='Enter'||event.keyCode===13){window.open('https://www.codesamaaj.com','_blank')}">
+                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/codesamaaj_m5zn91.png" alt="Founder's Support logo">
+                                <h3>Activist, Codesamaaj</h3>
+                                <p class="subtext">Non Profit, Tech Community</p>
+                                <p class="lead">I can help you to find your passion, build your skills and connect with the right people.</p>
+                                <ul class="skills"><li>Hands on Workshops</li><li>Career Guidance</li><li>Startup Guidance</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            
+            <!-- ===== VISION CALLOUT (duplicate of #callout content) ===== -->
+            <section id="callout-2" class="section visible" style="margin-top: 18px;">
+                <div style="padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius: 16px;">
+                    <h2>Vision — where tech and nature collide</h2>
+                    <p style="color: var(--text-muted); margin: 10px 0;">Machines replaced muscles. Now they're taking on minds. It's time for humans to expand where machines can't — meaning, the inner world.</p>
+                    <p style="margin: 8px 0 10px;">Nature holds mysteries — and one of them is cannabis as a tool for expanding consciousness. I don't claim magic; I claim careful study, respect, and ethical use. My work sits at that intersection: rigorous tech + rooted nature.</p>
+                    <div style="background: linear-gradient(90deg, rgba(31,163,90,0.06), rgba(34,116,165,0.04)); padding: 12px; border-radius: 12px; margin: 10px 0; border: 1px dashed rgba(255,255,255,0.03);">Want to co-create a self-running business? Or just swap some ideas? I'm in.</div>
+                </div>
+            </section>
+            
+
             <!-- ===== CONTACT (MAIN SITE) ===== -->
-            <section class="section visible">
-                <h2 class="section-title">CONTACT</h2>
+            <section id="contact" class="section visible">
+                <h2 class="section-title">CONNECT WITH ME HERE</h2>
                 <form id="contactForm" class="contact-form">
                     <div class="grid-2-col-contact">
                         <div class="form-group">
@@ -644,7 +723,7 @@
         </main>
 
         <footer>
-            <p>Ready to build the future.</p>
+            <p>Ready to build the future. © Akhil Tony</p>
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/akhil-tony-p-86162a1a6" target="_blank">LinkedIn</a>
                 <a href="mailto:atpulickal@gmail.com">Email</a>
@@ -736,7 +815,7 @@
                 });
             }, { threshold: 0.14 });
 
-            document.querySelectorAll('.story-block .reveal').forEach(el => io.observe(el));
+            document.querySelectorAll('.story-block .reveal, .my-services.reveal').forEach(el => io.observe(el));
         })();
 
         // Subtle parallax for a designated hero image only (opt-in via class)
