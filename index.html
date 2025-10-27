@@ -480,7 +480,7 @@
         <header>
             <div class="logo">AKHILTONY.COM</div>
             <div class="contact-links">
-                <a href="mailto:atpulickal@gmail.com">Email</a>
+                <a href="mailto:atpulickal@gmail.com" data-track-id="header-email">Email</a>
             </div>
         </header>
 
@@ -491,9 +491,9 @@
                 <p>I build AI-powered systems that help solopreneurs run their businesses on autopilot and scale new ventures.</p>
                 <br><br>
                 <div class="cta-row">
-                    <a href="#contact">Contact Me</a>
-                    <a href="#my-services">My Services</a>
-                    <a href="#my-story">My Story</a>
+                    <a href="#contact" data-track-id="cta-contact">Contact Me</a>
+                    <a href="#my-services" data-track-id="cta-my-services">My Services</a>
+                    <a href="#my-story" data-track-id="cta-my-story">My Story</a>
                 </div>
             </section>
 
@@ -733,7 +733,7 @@
                                 <ul class="skills"><li>Nutritional Products</li><li>Generic Medicines</li><li>Scheduled E1 Drugs</li></ul>
                             </div>
                             <div class="card small">
-                                <a href="https://www.cannalogic.in" target="_blank" rel="noopener" title="Open Cannalogic in a new tab">
+                                <a href="https://www.cannalogic.in" target="_blank" rel="noopener" title="Open Cannalogic in a new tab" data-track-id="service-cannalogic">
                                     <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/cannalogic_1_uwgjys.png" alt="Data & MLOps logo">
                                 </a>
                                 <h3>Co-founder, Cannalogic</h3>
@@ -742,7 +742,7 @@
                                 <ul class="skills"><li>Doctor Consulation</li><li>Cannabis Products</li><li>Affiliate Marketing</li></ul>
                             </div>
                             <div class="card small">
-                                <a href="https://www.codesamaaj.com" target="_blank" rel="noopener" title="Open Codesamaaj in a new tab">
+                                <a href="https://www.codesamaaj.com" target="_blank" rel="noopener" title="Open Codesamaaj in a new tab" data-track-id="service-codesamaaj">
                                     <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/codesamaaj_m5zn91.png" alt="Founder's Support logo">
                                 </a>
                                 <h3>Activist, Codesamaaj</h3>
@@ -788,7 +788,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit">Send Message</button>
+                    <button type="submit" data-track-id="contact-send">Send Message</button>
                     <div id="formMessage" class="form-message" style="display: none;"></div>
                 </form>
             </section>
@@ -797,9 +797,9 @@
         <footer>
             <p>Ready to build the future. © Akhil Tony</p>
             <div class="contact-links">
-                <a href="https://www.linkedin.com/in/akhil-tony-p-86162a1a6" target="_blank">LinkedIn</a>
-                <a href="mailto:atpulickal@gmail.com">Email</a>
-                <a href="https://www.cannalogic.in" target="_blank">Cannalogic</a>
+                <a href="https://www.linkedin.com/in/akhil-tony-p-86162a1a6" target="_blank" data-track-id="footer-linkedin">LinkedIn</a>
+                <a href="mailto:atpulickal@gmail.com" data-track-id="footer-email">Email</a>
+                <a href="https://www.cannalogic.in" target="_blank" data-track-id="footer-cannalogic">Cannalogic</a>
             </div>
             <p class="footer-note">The future is automated.</p>
         </footer>
@@ -808,7 +808,7 @@
     <!-- =========================
          SCRIPTS
     ==========================-->
-    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button">↑</button>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button" data-track-id="btn-back-to-top">↑</button>
     <script>
         // --- CURSOR BLOB EFFECT ---
         const blob = document.querySelector('.blob');
@@ -999,7 +999,8 @@
     lastActive,
     sectionTimes: {}, // sectionId -> ms
     videoStats: {},   // videoId -> {playedMs, plays, pauses, isPlaying, lastPlayStart, currentTime}
-    events: []
+        events: [],
+        buttonCounts: {} // id/data-track-id/href/label -> click count
   };
 
   function pushEvent(ev){
@@ -1130,7 +1131,8 @@
 
   // HEARTBEAT SENDER
   let heartbeatTimer = setInterval(()=> {
-      if (document.hidden) return; // skip heartbeat when page is hidden
+
+    if (document.hidden) return; // skip heartbeat when page is hidden
     // finalize active section transient
     if(activeSection && activeSectionSince){
       const delta = now() - activeSectionSince;
@@ -1169,6 +1171,7 @@
       lastActive,
       sectionTimes: sectionSnapshot,
       videoStats: videoSnapshot,
+            buttonCounts: state.buttonCounts,
       eventsTail: state.events.slice(-20)
     };
 
@@ -1204,7 +1207,8 @@
       videoStats: Object.fromEntries(Object.keys(state.videoStats).map(k=>{
         const s = state.videoStats[k];
         return [k, {playedMs: Math.round(s.playedMs||0), plays:s.plays||0, pauses:s.pauses||0, durationSec: s.durationSec||null}];
-      })),
+            })),
+            buttonCounts: state.buttonCounts,
       eventsTail: state.events.slice(-MAX_EVENTS_KEEP)
     };
     // send via sendBeacon if possible
@@ -1215,19 +1219,34 @@
   window.addEventListener('beforeunload', finalizeAndSend);
   window.addEventListener('pagehide', finalizeAndSend);
 
-  // optional small click tracker to refresh lastActive
-  document.addEventListener('click', (e) => {
-    lastActive = now();
-    pushEvent({type:'click', ts: lastActive, tag: e.target.tagName, id: e.target.id || null, classes: e.target.className || null});
-  });
+    // Button/link click tracking (delegated): counts per element id/data-track-id/href/label
+    document.addEventListener('click', (e) => {
+        lastActive = now();
+        const el = e.target && (e.target.closest ? e.target.closest('a,button') : null);
+        if (!el) return;
+        // Prefer a stable identifier
+        const key = (
+            el.getAttribute('data-track-id') ||
+            el.id ||
+            (el.tagName === 'A' ? el.getAttribute('href') : '') ||
+            (el.textContent ? el.textContent.trim().slice(0, 60) : '') ||
+            'unknown'
+        );
+        state.buttonCounts[key] = (state.buttonCounts[key] || 0) + 1;
+        pushEvent({
+            type: 'click',
+            ts: lastActive,
+            tag: el.tagName,
+            id: el.id || null,
+            key,
+            href: el.tagName === 'A' ? (el.getAttribute('href') || null) : null
+        });
+    }, { passive: true });
 
   // expose debug object for dev console
   window.__trk_state = state;
 
 })();
 </script>
-
-
 </body>
 </html>
-
