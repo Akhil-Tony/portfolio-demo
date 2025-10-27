@@ -1130,6 +1130,7 @@
 
   // HEARTBEAT SENDER
   let heartbeatTimer = setInterval(()=> {
+      if (document.hidden) return; // skip heartbeat when page is hidden
     // finalize active section transient
     if(activeSection && activeSectionSince){
       const delta = now() - activeSectionSince;
@@ -1229,3 +1230,4 @@
 
 </body>
 </html>
+
