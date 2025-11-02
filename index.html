@@ -8,7 +8,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AKHILTONY.COM</title>
+    <title>AKHILTONY</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760737372/Untitled_design_24_emhfu3.png">
     <link rel="apple-touch-icon" href="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760737372/Untitled_design_24_emhfu3.png">
@@ -512,6 +512,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: opacity 0.3s ease;
         }
         .sidebar-toggle img {
             width: 40px;
@@ -599,8 +600,8 @@
             <section class="section visible">
                 <h2 align="center">WATCH THIS VIDEO 👇🏻</h2> <br>
                 <div class="video-container">
-                    <video data-video-id="main-video" controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.jpg" title="VIDEO SALES LETTER">
-                        <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.mp4" type="video/mp4">
+                    <video data-video-id="main-video" controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1762123876/22kkb_in6cuq.jpg" title="VIDEO SALES LETTER">
+                        <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1762123876/22kkb_in6cuq.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -1034,10 +1035,14 @@
 
             function openSidebar() {
                 sidebar.classList.add('open');
+                sidebarToggle.style.opacity = '0';
+                sidebarToggle.style.pointerEvents = 'none';
             }
 
             function closeSidebar() {
                 sidebar.classList.remove('open');
+                sidebarToggle.style.opacity = '1';
+                sidebarToggle.style.pointerEvents = 'auto';
             }
 
             sidebarToggle.addEventListener('click', function(e) {
