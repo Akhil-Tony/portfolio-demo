@@ -60,6 +60,7 @@
             opacity: 0.15;
             pointer-events: none;
             transition: all 0.5s ease-out;
+            z-index: 5; /* ensure blob renders above banner background */
         }
 
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
@@ -96,14 +97,64 @@
             border-right: 3px solid var(--accent);
             animation: blink 1s step-end infinite;
             display: inline;
+            white-space: nowrap; /* prevent wrapping while typing */
         }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent); } }
+        /* Reserve stable space for the typing text to avoid layout shifts */
+        .typing-slot { display: inline-block; width: 18ch; }
+        @media (max-width: 420px){ .typing-slot { width: 16ch; } }
+        @media (min-width: 900px){ .typing-slot { width: 20ch; } }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
             max-width: 600px;
             margin: 20px auto 0;
+        }
+        /* Full-bleed homepage banner (header + hero inside) */
+        .home-banner {
+            position: relative;
+            /* full-bleed without causing mobile right-gap */
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            margin-left: 0;
+            margin-right: 0;
+            width: 100vw;
+            height: clamp(520px, 60vh, 720px); /* a bit taller on desktop, still min 520px on mobile */
+            background: url('https://res.cloudinary.com/djwx0b9nj/image/upload/v1762112760/DSC00216_cieprd.jpg') center / cover no-repeat;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            /* Bottom fade to page background */
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 88%, rgba(0,0,0,0) 100%);
+        }
+        /* Keep the top area (face) visible on wider screens and fill laptop viewport */
+        @media (min-width: 900px){
+            .home-banner {
+                height: 100vh;                 /* fill full screen on laptops/desktop */
+                background-position: 50% 15%;  /* show a bit more lower portion without cutting top */
+                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 86%, rgba(0,0,0,0) 100%);
+                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 86%, rgba(0,0,0,0) 100%);
+            }
+        }
+        .home-banner:after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.20) 40%, rgba(0,0,0,0.45));
+            pointer-events: none;
+            z-index: 0; /* keep overlay below blob and content */
+        }
+        .home-banner .banner-wrap {
+            position: relative;
+            z-index: 2; /* content above blob and overlay */
+            width: 100%;
+            padding: 20px 20px 30px;
+        }
+        @media (max-width: 640px){
+            .home-banner { height: 520px; }
         }
         .hero .cta-row { display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
         .hero .cta-row a {
@@ -472,24 +523,97 @@
 
         .story-block footer { margin-top: 28px; text-align: center; color: var(--story-muted); font-size: 0.92rem; background: transparent; border: 0; padding: 0; }
 
+        /* =========================
+           SIDEBAR (LEFT SLIDE-IN)
+        ==========================*/
+        #sidebarToggle {
+            position: fixed;
+            left: 16px;
+            top: 16px;
+            width: 54px;
+            height: 54px;
+            border: none;
+            border-radius: 12px;
+            background: url('https://res.cloudinary.com/djwx0b9nj/image/upload/v1762117785/Untitled_design_26_lrlreb.png') center / contain no-repeat;
+            background-color: transparent;
+            cursor: pointer;
+            z-index: 1100;
+            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+        }
+        #sidebarToggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        @media (max-width: 480px){ #sidebarToggle { width: 48px; height: 48px; left: 12px; top: 12px; } }
+
+        .side-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1090;
+            display: none;
+        }
+        .side-overlay.show { display: block; }
+
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: min(86vw, 320px);
+            background: var(--card-bg);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 6px 0 24px rgba(0,0,0,0.35);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1105;
+            padding: 16px 16px 24px;
+        }
+        .side-drawer.open { transform: translateX(0); }
+        .side-drawer header { font-family: 'Roboto Mono', monospace; font-weight: 600; margin: 4px 0 14px; color: var(--text); }
+        .side-drawer nav a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 8px 6px;
+            border-radius: 8px;
+            margin: 2px 0;
+        }
+        .side-drawer nav a:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+
+        .side-close {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+            font-size: 22px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .side-close:hover { background: rgba(255,255,255,0.08); }
+
     </style>
 </head>
 <body>
     <div class="blob"></div>
     <div class="container">
-        <header>
-            <div class="logo">AKHILTONY.COM</div>
-            <div class="contact-links">
-                <a href="mailto:atpulickal@gmail.com" data-track-id="header-email">Email</a>
+        <section data-section-id="home-banner" class="home-banner" aria-label="Homepage banner">
+            <div class="banner-wrap">
+                
             </div>
-        </header>
+        </section>
 
         <main>
-            <!-- ===== HERO ===== -->
             <section data-section-id="title-hero" class="hero">
-                <h1>Automate <span id="typing-text"></span></h1>
-                <p>I build AI-powered systems that help solopreneurs run their businesses on autopilot and scale new ventures.</p>
-                <br><br>
+                <h1>Automate Your:<span class="typing-slot"><span id="typing-text"></span></span></h1>
+                <p>Unlock the Power of AI to Transform Your Business into self-driving profit machines.</p>
+                <br>
                 <div class="cta-row">
                     <a href="#contact" data-track-id="cta-contact">Contact Me</a>
                     <a href="#my-services" data-track-id="cta-my-services">My Services</a>
@@ -499,7 +623,7 @@
 
             <!-- ===== VSL ===== -->
             <section class="section visible">
-                <h2 class="section-title">LET ME TELL YOU A SIMPLE TRUTH...</h2>
+                <h2 align="center">WATCH A VIDEO 👇🏻</h2><br>
                 <div class="video-container">
                     <video data-video-id="main-video" controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.jpg" title="VIDEO SALES LETTER">
                         <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.mp4" type="video/mp4">
@@ -510,7 +634,7 @@
 
             <!-- ===== MANIFESTO ===== -->
             <section data-section-id="why-powerstones" class="section manifesto visible">
-                <h2 class="section-title">WHY YOU NEED THREE POWER STONES</h2>
+                <h2 class="section-title" align="center">WHY YOU NEED THREE POWER STONES</h2>
                 <p>In the AGRICULTURAL REVOLUTION people who could generate and store food were the key players. So land owners became rich. 
                 <br>In the INDUSTRIAL REVOLUTION machines replaced man power. production scaled massively. Machine and factory owners became rich
                 <br>In the INTERNET REVOLUTION information became power, tech owners became rich
@@ -595,8 +719,8 @@
                                             <strong>Takeaway:</strong> Be boringly consistent. Build things. Ship them. Repeat.
                                         </div>
                                     </div>
-                                <div class="card small">
-                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1761851760/20251031_004318_jmpcnq.jpg" alt="Akhil portrait" style="width:100%; border-radius:12px;">
+                                <div>
+                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1761851760/20251031_004318_jmpcnq.jpg" alt="Akhil portrait" style="width:100%; border-radius:12px; display:block;">
                                 </div>
                             </div>
                         </section>
@@ -808,6 +932,18 @@
     <!-- =========================
          SCRIPTS
     ==========================-->
+    <!-- Sidebar toggle + drawer -->
+    <button id="sidebarToggle" aria-controls="sideDrawer" aria-expanded="false" title="Open menu" type="button" data-track-id="sidebar-toggle"></button>
+    <div id="sideOverlay" class="side-overlay" hidden data-track-id="sidebar-overlay"></div>
+    <aside id="sideDrawer" class="side-drawer" aria-hidden="true">
+        <button class="side-close" aria-label="Close menu" type="button" data-track-id="sidebar-close">×</button>
+        <header>Menu</header>
+        <nav>
+            <a href="#contact" data-track-id="sidebar-contact">Contact</a>
+            <a href="#my-services" data-track-id="sidebar-services">My Services</a>
+            <a href="#my-story" data-track-id="sidebar-story">My Story</a>
+        </nav>
+    </aside>
     <button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top" type="button" data-track-id="btn-back-to-top">↑</button>
     <script>
         // --- CURSOR BLOB EFFECT ---
@@ -1248,5 +1384,44 @@
 
 })();
 </script>
+
+    <script>
+    // --- SIDEBAR OPEN/CLOSE HANDLERS ---
+    (function(){
+        const toggleBtn = document.getElementById('sidebarToggle');
+        const drawer = document.getElementById('sideDrawer');
+        const overlay = document.getElementById('sideOverlay');
+        const closeBtn = drawer ? drawer.querySelector('.side-close') : null;
+
+        if(!toggleBtn || !drawer || !overlay) return;
+
+        function openDrawer(){
+            drawer.classList.add('open');
+            drawer.setAttribute('aria-hidden', 'false');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            overlay.classList.add('show');
+            overlay.hidden = false;
+        }
+        function closeDrawer(){
+            drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            overlay.classList.remove('show');
+            overlay.hidden = true;
+        }
+        function toggleDrawer(){
+            if (drawer.classList.contains('open')) closeDrawer(); else openDrawer();
+        }
+
+        toggleBtn.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', closeDrawer);
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+        });
+    })();
+    </script>
+
+
 </body>
 </html>
