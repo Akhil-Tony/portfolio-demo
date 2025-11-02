@@ -498,16 +498,97 @@
 
         .story-block footer { margin-top: 28px; text-align: center; color: var(--story-muted); font-size: 0.92rem; background: transparent; border: 0; padding: 0; }
 
+        /* Sidebar Styles */
+        .sidebar-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1002;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-toggle img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .sidebar {
+            position: absolute;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: #111;
+            padding: 60px 20px 20px;
+            z-index: 1001;
+            transition: left 0.3s ease-in-out;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .sidebar nav a:hover {
+            background-color: var(--accent);
+            color: #fff;
+        }
+        .sidebar .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <div class="home-banner"></div>
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1762117785/Untitled_design_26_lrlreb.png" alt="Menu">
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="sidebarClose">&times;</button>
+        <nav>
+            <a href="#title-hero">Home</a>
+            <a href="#my-services">My Services</a>
+            <a href="#my-story">My Story</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </aside>
+
+    <section class="home-banner" data-section-id="home-banner"></section>
     <div class="blob"></div>
     <div class="container">
         <main>
             <!-- ===== HERO ===== -->
-            <section data-section-id="title-hero" class="hero">
-                <h1>Automate <span id="typing-text"></span></h1>
+            <section data-section-id="title-hero" id="title-hero" class="hero">
+                <h1>Automate Your<br><span id="typing-text"></span></h1>
                 <p>Unlock the Power of AI to Transform Your Business into self-driving profit machines.</p>
                 <br><br>
                 <div class="cta-row">
@@ -519,7 +600,7 @@
 
             <!-- ===== VSL ===== -->
             <section class="section visible">
-                <h2 class="section-title">LET ME TELL YOU A SIMPLE TRUTH...</h2>
+                <h2 align="center">WATCH THIS VIDEO 👇🏻</h2> <br>
                 <div class="video-container">
                     <video data-video-id="main-video" controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.jpg" title="VIDEO SALES LETTER">
                         <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1761543428/ai_vsl_kmhh3j.mp4" type="video/mp4">
@@ -530,7 +611,7 @@
 
             <!-- ===== MANIFESTO ===== -->
             <section data-section-id="why-powerstones" class="section manifesto visible">
-                <h2 class="section-title">WHY YOU NEED THREE POWER STONES</h2>
+                <h2 class="section-title" align="center">WHY YOU NEED THREE POWER STONES</h2>
                 <p>In the AGRICULTURAL REVOLUTION people who could generate and store food were the key players. So land owners became rich. 
                 <br>In the INDUSTRIAL REVOLUTION machines replaced man power. production scaled massively. Machine and factory owners became rich
                 <br>In the INTERNET REVOLUTION information became power, tech owners became rich
@@ -944,6 +1025,28 @@
                 v.addEventListener('play', () => {
                     videos.forEach(other => { if (other !== v && !other.paused) other.pause(); });
                 });
+            });
+        })();
+
+        // --- SIDEBAR ---
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const navLinks = sidebar.querySelectorAll('nav a');
+
+            function openSidebar() {
+                sidebar.classList.add('open');
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+            }
+
+            sidebarToggle.addEventListener('click', openSidebar);
+            sidebarClose.addEventListener('click', closeSidebar);
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeSidebar);
             });
         })();
     </script>
