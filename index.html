@@ -504,21 +504,18 @@
             top: 20px;
             left: 20px;
             z-index: 1002;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            background: transparent;
+            border: none;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.1);
         }
         .sidebar-toggle img {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
         }
 
         .sidebar {
@@ -546,7 +543,7 @@
         .sidebar nav a {
             color: var(--text);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1rem;
             padding: 10px 15px;
             border-radius: 8px;
             transition: background-color 0.2s ease, color 0.2s ease;
@@ -1043,10 +1040,19 @@
                 sidebar.classList.remove('open');
             }
 
-            sidebarToggle.addEventListener('click', openSidebar);
+            sidebarToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openSidebar();
+            });
             sidebarClose.addEventListener('click', closeSidebar);
             navLinks.forEach(link => {
                 link.addEventListener('click', closeSidebar);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (sidebar.classList.contains('open') && !sidebar.contains(e.target)) {
+                    closeSidebar();
+                }
             });
         })();
     </script>
