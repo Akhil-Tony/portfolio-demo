@@ -969,6 +969,16 @@
         const formMessage = document.getElementById('formMessage');
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // 1. Open a new tab immediately on click. The browser should allow this.
+            const redirectWindow = window.open('', '_blank');
+            if (redirectWindow) {
+                redirectWindow.document.write('Please wait, preparing your meeting link...');
+            } else {
+                alert('Pop-up blocked! Please allow pop-ups for this site to get your meeting link.');
+                return; // Stop if the window couldn't be opened
+            }
+
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
             
@@ -985,18 +995,20 @@
 
                 if (response.ok) {
                     const responseData = await response.json();
-                    console.log('Received response from webhook:', responseData); // Log the response
+                    console.log('Received response from webhook:', responseData);
 
-                    formMessage.textContent = 'Message sent! Redirecting...';
+                    formMessage.textContent = 'Message sent! Your meeting link is opening...';
                     formMessage.className = 'form-message success';
                     formMessage.style.display = 'block';
                     contactForm.reset();
 
+                    // 2. Now, update the URL of the tab we already opened.
                     if (responseData && responseData.meetingLink) {
-                        console.log('Found meeting link, opening in new tab:', responseData.meetingLink);
-                        window.open(responseData.meetingLink, '_blank');
+                        console.log('Found meeting link, redirecting existing tab:', responseData.meetingLink);
+                        redirectWindow.location.href = responseData.meetingLink;
                     } else {
                         console.log('No meetingLink found in the response.');
+                        redirectWindow.document.write('Could not find a meeting link. You can close this tab.');
                     }
                 } else {
                     console.error('Server responded with an error:', response.status, response.statusText);
@@ -1005,12 +1017,14 @@
                     formMessage.textContent = `Error: ${response.statusText}. Please try again.`;
                     formMessage.className = 'form-message error';
                     formMessage.style.display = 'block';
+                    if (redirectWindow) redirectWindow.close(); // Close the pop-up on error
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
                 formMessage.textContent = 'Network error. Please check your connection and console for details.';
                 formMessage.className = 'form-message error';
                 formMessage.style.display = 'block';
+                if (redirectWindow) redirectWindow.close(); // Close the pop-up on error
             } finally {
                 submitButton.disabled = false;
                 submitButton.textContent = 'Send Message';
