@@ -33,21 +33,11 @@
         .home-banner {
             width: 100%;
             height: 90vh;
-            background-image: url('https://res.cloudinary.com/djwx0b9nj/image/upload/v1762112760/DSC00216_cieprd.jpg');
+            background-image: url('https://res.cloudinary.com/dzboz4mwb/image/upload/v1782735883/WhatsApp_Image_2026-06-29_at_5.53.02_PM_pdkfqr.jpg');
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
             position: relative;
-        }
-
-        .home-banner::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            background: linear-gradient(to top, var(--bg), transparent);
         }
 
         @media (max-width: 768px) {
@@ -130,6 +120,40 @@
             color: var(--text-muted);
             max-width: 600px;
             margin: 20px auto 0;
+        }
+        .hero .social-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .hero .social-row span {
+            font-weight: 500;
+            color: var(--text);
+        }
+        .hero .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background-color 0.25s ease, transform 0.2s ease;
+        }
+        .hero .social-link svg {
+            display: block;
+            color: var(--accent);
+        }
+        .hero .social-link:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-1px);
         }
         .hero .cta-row { display: flex; justify-content: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
         .hero .cta-row a {
@@ -586,19 +610,29 @@
         <main>
             <!-- ===== HERO ===== -->
             <section data-section-id="title-hero" id="title-hero" class="hero">
-                <h1>Automate Your<br><span id="typing-text"></span></h1>
-                <p>Unlock the Power of AI to Transform Your Business into self-driving profit machines.</p>
-                <br><br>
+                <h1>I am Akhil Tony</h1>
+                <p>An AI expert with hands-on business knowledge, guiding the next generation into the world of AI and entrepreneurship.</p>
+                <br>
+                <div class="social-row">
+                    <span>Connect with me on</span>
+                    <a href="https://www.linkedin.com/in/akhil-tony-86162a1a6" target="_blank" rel="noopener" class="social-link linkedin" data-track-id="hero-linkedin">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6C1.12 6 0 4.88 0 3.5C0 2.12 1.12 1 2.5 1C3.88 1 4.98 2.12 4.98 3.5ZM0.5 23.5H4.5V7.5H0.5V23.5ZM8.5 23.5H12.5V15.5C12.5 13.5 14.2 12.5 15.8 12.5C17.4 12.5 18 13.5 18 15.2V23.5H22V14.8C22 10.2 19.3 8 15.5 8C12.8 8 11.2 9.5 10.7 10.2H10.5V7.5H8.5C8.5 7.5 8.5 23.5 8.5 23.5Z" fill="currentColor"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/_akhiltony_?igsh=MWZ2bWF2MmZhNDFhdQ==" target="_blank" rel="noopener" class="social-link instagram" data-track-id="hero-instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163C7.137 2.163 3.5 5.8 3.5 10.663V13.337C3.5 18.2 7.137 21.837 12 21.837C16.863 21.837 20.5 18.2 20.5 13.337V10.663C20.5 5.8 16.863 2.163 12 2.163ZM12 19.837C8.254 19.837 5.5 17.083 5.5 13.337V10.663C5.5 6.917 8.254 4.163 12 4.163C15.746 4.163 18.5 6.917 18.5 10.663V13.337C18.5 17.083 15.746 19.837 12 19.837ZM12 6.337C9.348 6.337 7.25 8.435 7.25 11.087C7.25 13.739 9.348 15.837 12 15.837C14.652 15.837 16.75 13.739 16.75 11.087C16.75 8.435 14.652 6.337 12 6.337ZM12 14.337C10.345 14.337 9 13.0 9 11.337C9 9.682 10.345 8.337 12 8.337C13.655 8.337 15 9.682 15 11.337C15 13.0 13.655 14.337 12 14.337ZM17.5 6.837C17.5 7.537 16.937 8.1 16.237 8.1C15.537 8.1 14.975 7.537 14.975 6.837C14.975 6.137 15.537 5.575 16.237 5.575C16.937 5.575 17.5 6.137 17.5 6.837Z" fill="currentColor"/></svg>
+                        Instagram
+                    </a>
+                </div>
+                <br>
                 <div class="cta-row">
-                    <a href="#contact" data-track-id="cta-contact">Contact Me</a>
                     <a href="#my-services" data-track-id="cta-my-services">My Services</a>
                     <a href="#my-story" data-track-id="cta-my-story">My Story</a>
                 </div>
             </section>
 
-            <!-- ===== VSL ===== -->
+         <!-- ===== VSL ===== -->
             <section class="section visible">
-                <h2 align="center">WATCH THIS VIDEO 👇🏻</h2> <br>
                 <div class="video-container">
                     <video data-video-id="main-video" controls preload="metadata" playsinline poster="https://res.cloudinary.com/djwx0b9nj/video/upload/v1762123876/22kkb_in6cuq.jpg" title="VIDEO SALES LETTER">
                         <source src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1762123876/22kkb_in6cuq.mp4" type="video/mp4">
@@ -606,21 +640,48 @@
                     </video>
                 </div>
             </section>
-
-            <!-- ===== MANIFESTO ===== -->
-            <section data-section-id="why-powerstones" class="section manifesto visible">
-                <h2 class="section-title" align="center">WHY YOU NEED THREE POWER STONES</h2>
-                <p>In the AGRICULTURAL REVOLUTION people who could generate and store food were the key players. So land owners became rich. 
-                <br>In the INDUSTRIAL REVOLUTION machines replaced man power. production scaled massively. Machine and factory owners became rich
-                <br>In the INTERNET REVOLUTION information became power, tech owners became rich
-                <br>In the SOCIAL MEDIA REVOLUTION Attention became the asset. Social media influencers became rich
-                <br>Now its is the ai revolution. 
-                <br>Every new revolution will be more faster because it's always build on top of the others.
-                <br>So what you think will you take advantage of this massive wealth transfer?</p>
-
-                <p>We are in the midst of a revolution. A.I is the ultimate catalyst for making money faster and with less effort. This is no longer a choice; it's an inevitability.<br> If you wait, your competitors will adapt to AI, reduce their operational costs, and out-compete you by selling to a wider customer base for a lower price.
-                <span style="color:#00eeff; font-weight:bold;"> Human work is limited, but A.I. has no limits.</span></p>
-            </section>
+            <!-- ===== MY SERVICES (before contact, full-bleed with inner wrap) ===== -->
+                <section data-section-id="myservices" id="my-services" class="my-services reveal">
+                    <div class="wrap">
+                        <h2>What I can help you with</h2>
+                        <div class="grid">
+                            <div class="card small">
+                                <a href="https://www.trillionxai.com" target="_blank" rel="noopener" title="Open TrillionX AI in a new tab" data-track-id="service-trillionxai">
+                                    <img class="service-logo" src="https://res.cloudinary.com/dzboz4mwb/image/upload/v1782734471/WhatsApp_Image_2026-02-24_at_2.58.33_PM_f1lwuz.jpg" alt="Automation Services logo">
+                                </a>
+                                <h3>AI Consultant & Builder, TrillionX</h3>
+                                <p class="subtext">Automation Services</p>
+                                <p class="lead">I can help you build intelligent systems that give back your time and freedom.</p>
+                                <ul class="skills"><li>AI product design</li><li>Data Pipelines</li><li>Custom Integrations</li></ul>
+                            </div>
+                            <div class="card small">
+                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/ecoherb_phdn9m.png" alt="Automation Systems logo">
+                                <h3>Managing Director, Ecoherb Health and Ayur Pvt Ltd</h3>
+                                <p class="subtext">Ayurvedic Drug Manufacturing Company</p>
+                                <p class="lead">I can help you build custom Ayurvedic Medicines, legal documentation work or help with product whitelabeling services.</p>
+                                <ul class="skills"><li>Nutritional Products</li><li>Generic Medicines</li><li>Scheduled E1 Drugs</li></ul>
+                            </div>
+                            <div class="card small">
+                                <a href="https://www.cannalogic.in" target="_blank" rel="noopener" title="Open Cannalogic in a new tab" data-track-id="service-cannalogic">
+                                    <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/cannalogic_1_uwgjys.png" alt="Data & MLOps logo">
+                                </a>
+                                <h3>Co-founder, CannaLogic</h3>
+                                <p class="subtext">Leading Medical Cannabis Brand</p>
+                                <p class="lead">I can help you to heal your body, mind and spirit with help of the sacred plant Cannabis.</p>
+                                <ul class="skills"><li>Doctor Consulation</li><li>Cannabis Products</li><li>Affiliate Marketing</li></ul>
+                            </div>
+                            <div class="card small">
+                                <a href="https://www.codesamaaj.com" target="_blank" rel="noopener" title="Open Codesamaaj in a new tab" data-track-id="service-codesamaaj">
+                                    <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/codesamaaj_m5zn91.png" alt="Founder's Support logo">
+                                </a>
+                                <h3>Educator, Codesamaaj</h3>
+                                <p class="subtext">Non Profit, Tech Community</p>
+                                <p class="lead">I can help you to find your passion, build your skills and connect with the right people.</p>
+                                <ul class="skills"><li>Hands on Workshops</li><li>Career Guidance</li><li>Startup Guidance</li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             <!-- ===== POWER STONES ===== -->
             <section data-section-id="powerstones" class="section visible">
@@ -681,27 +742,8 @@
 
                         <h1 class="section-title mystory" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#28e084,#00ccff,#e6ee05); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(255,74,74,0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">MY-STORY</h1>
 
-                        <section data-section-id="intro" id="intro" class="story reveal">
-                            <h2>From late-night coding to building self-running businesses (and a little cannabis magic)</h2>
-                            <div class="grid">
-                                <div class="timeline">
-                                        <div class="event"><div class="dot"></div>
-                                            <strong>Challenge:</strong> I wanted to work where scale mattered — problems that touch millions.
-                                            <p class="lead">I prepared like an athlete: projects, open-source contributions, and a few portfolio pieces that showed I could ship. Interviews were tough, but I treated them like experiments: hypothesis, test, iterate.</p>
-                                            <p>Outcome: I joined Samsung as an AI engineer — building systems that think, optimize and sometimes argue with humans (friendly arguments only).</p>
-                                        </div>
-                                        <div class="event"><div class="dot"></div>
-                                            <strong>Takeaway:</strong> Be boringly consistent. Build things. Ship them. Repeat.
-                                        </div>
-                                    </div>
-                                <div class="card small">
-                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1761851760/20251031_004318_jmpcnq.jpg" alt="Akhil portrait" style="width:100%; border-radius:12px;">
-                                </div>
-                            </div>
-                        </section>
-
                         <section data-section-id="samsung" id="samsung" class="story reveal">
-                            <h2>Working at Samsung — (Spoiler: Research + Development)</h2>
+                            <h2>Working at Samsung — Research & Development</h2>
                             <div class="grid" style="grid-template-columns: 40% 1fr; gap:18px;">
                                 <div style="display:flex;flex-direction:column;gap:12px;">
                                     <div class="media reveal" style="border-radius:14px; overflow:hidden;">
@@ -710,13 +752,10 @@
                                 </div>
                                 <div>
                                     <div class="card small">
-                                    <p class="lead">I had a fancy dream to work in an well known company, Where there is Innovation, Team spirit and a Work culture. Samsung Electro-Mechanics, Bangalore (Officially We call it SEM-B) was the best. 
-                                        Less than 2 years I worked still taught me more than I wanted to know.</p>
-                                    <p>Had a much better life there. I enjoyed working with people who had multiple PhD's me just with a normal BCA, 
-                                        Even the interview that I attended off-campus was for professionals with 3-5 years experience still I cracked all the 4 rounds and made me the youngest employee working in SEM-B, Even before me graduating. 
-                                        I was purely hired because of my skills. From there I learned "Degree is just a piece of paper".<br>
-                                        Our great on work on Generative A.I, made impact in the Korean factories to reduce 30% Human labour work especially on quality control.</p>
-                                    <div class="funny"><strong>Why I quit : </strong>We have far less time than we think we have. Could'nt afford more than 2 years to be the same. I had a promise to myself that i will until 25 years old focus on learning new things, so had to move on.</div>
+                                    <p class="lead">At Samsung Electro-Mechanics, Bangalore, I worked in AI research and development alongside top scholars and engineers.</p>
+                                    <p>I focused on applied AI for automation, natural language processing and computer vision, building systems that improved manufacturing workflows and quality control.
+                                        This experience sharpened my expertise in designing intelligent solutions, scaling AI models, and creating practical automation pipelines for real-world industrial problems.</p>
+                                    <div class="funny"><strong>Key learnings:</strong> advanced AI research, automation architecture, NLP applications, and vision-based intelligence for production-grade systems.</div>
                                 </div>
                                 </div>
                             </div>
@@ -735,55 +774,6 @@
                                 <div class="card small media">
                                     <video data-video-id="workshop-video" src="https://res.cloudinary.com/djwx0b9nj/video/upload/v1760386140/workshops_video_drn0mc.mp4" controls loop preload="metadata" style="width:100%; border-radius:12px;"></video>
                                 </div>
-                            </div>
-                        </section>
-
-                        <section data-section-id="first-company" id="hemp" class="story reveal">
-                            <h2>Wanted to learn MBA — But decided to start own company</h2>
-                            <div class="grid">
-                                <div class="card small">
-                                    <p class="lead">After experiencing the scale of technology, and depth of leadership. I asked myself what i still don't have any idea about. There should be a unique purpose for every man, but it is not working a job, but something else, Its business. <br>
-                                        It felt strange — I always knew there was greatness in me, yet I had no business background to shape it.
-                                        My parents and family worked regular jobs, and none of my friends or colleagues had the slightest idea about starting business.
-                                        I was surrounded by good people, but not by entrepreneurs — so I had to teach myself the game from scratch.</p>
-                                    <p>When I say from scratch, I mean it completely.
-                                        I chose something I had absolutely no background in — Ancient Ayurveda.
-                                        The philosophy behind it fascinated me.
-                                        Everyone thought I’d start a tech company, but instead, I turned to Nature — seeking wisdom not from machines, but from the roots of life itself.
-                                        <strong>"Some journeys, we have to take alone."</strong> I quit my job inspired by a startup festival that happened on SEM-B, I arranged 10 to 12 Lakhs Money, took a deep breath and I simply dived in. 
-                                    </p>
-                                    <p>Looking back. I had traveled a long way, many times i made mistakes, I learned from each one, Done things that I'm proud of, and met incredible people along the way. Every step shaped me — made me wiser than I’ve ever been.</p>
-                                    <div class="funny"><strong>Ecoherb Health and Ayur Pvt Ltd</strong> - We are Ministry of Ayush licensed manufacturer of Medicinal Cannabis in India.</div>
-                                </div>
-                                <div class="card small media">
-                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1761551032/20251027_131232_1_vpazhg.jpg" alt="Hemp farm image">
-                                </div>
-                            </div>
-                        </section>
-
-                        <section data-section-id="why-hemp" id="why-hemp" class="story reveal">
-                            <h2>Why promoting Cannabis — despite being a technologist</h2>
-                            <div class="grid">
-                                <div class="card small media">
-                                    <img src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1761545883/CL_Prpducts_1_hw56lk.png" alt="Hemp plant">
-                                </div>
-                                <div class="card small">
-
-                                    
-                            <p class="lead">I had great impression by this plant. So i wanted to create a value added product product out of it. This made foundation for CANNALOGIC, A Medical Cannabis Brand. That focus on natural healing with modern understanding.
-                                            By creating a team of like minded doctors from MBBS, BAMS, BHMS etc. We started promoting natural medicines to patients suffering from Chronic Pain, Epilepsy, Cancer etc.
-                                            Also created some lighter dosage products to help for mental wellness.
-                                </p>
-                            <p>This is the starting of something meaningful, Nature holds countless mysteries one among them is the Cannabis. 
-                                It nurtures the body, mind and spirit as a whole, This is called Holistic Healing. 
-                                The real gift of A.I is its ability to uncover hidden truth. 
-                                Cannalogic will lead the way to break the stigma around the Sacred Cannabis Plant.
-                            </p>
-                            <div class="funny"><strong>Why : </strong> - A.I + Purpose is the future.
-                                Today you have the freedom to be a paradox. </div>    
-                                <br>
-                                <a href="https://drive.google.com/file/d/1UYfcgULjnlkkdyLvnlISkaXK-Lj0929F/view?usp=drive_link" target="_blank" rel="noopener" class="btn" style="display: inline-block; margin-top: 10px;" data-track-id="cta-download-brochure">Download Brochure</a>
-                            </div>
                             </div>
                         </section>
 
@@ -809,65 +799,13 @@
                             </div>
                         </section>
 
+                        
+
                     </main>
 
                 </div>
             </section>
             <!-- ===== END STORY BLOCK ===== -->
-
-            <!-- ===== MY SERVICES (before contact, full-bleed with inner wrap) ===== -->
-                <section data-section-id="myservices" id="my-services" class="my-services reveal">
-                    <h1 class="section-title mystory" align="center" style="font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight:800; letter-spacing:0.02em; background: linear-gradient(90deg,#da840b,#f8ec05,#e6ee05); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; text-shadow: 0 10px 30px rgba(251, 251, 251, 0.22), 0 0 60px rgba(255,30,30,0.18); filter: drop-shadow(0 12px 44px rgba(179,0,0,0.18));">MY-SERVICES</h1>
-                    <div class="wrap">
-                        <h2>What I'm capable of now — a practical flex</h2>
-                        <div class="grid">
-                            <div class="card small">
-                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/ai_consultant_mlygwb.png" alt="AI Product Design logo">
-                                <h3>AI Consultant & Builder, New Company</h3>
-                                <p class="subtext">Automation Services</p>
-                                <p class="lead">I can help you build intelligent systems that give back your time and freedom.</p>
-                                <ul class="skills"><li>AI product design</li><li>Data Pipelines</li><li>Custom Integrations</li></ul>
-                            </div>
-                            <div class="card small">
-                                <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/ecoherb_phdn9m.png" alt="Automation Systems logo">
-                                <h3>Managing Director, Ecoherb Health and Ayur Pvt Ltd</h3>
-                                <p class="subtext">Ayurvedic Drug Manufacturing Company</p>
-                                <p class="lead">I can help you build custom Ayurvedic Medicines, legal documentation work or help with product whitelabeling services.</p>
-                                <ul class="skills"><li>Nutritional Products</li><li>Generic Medicines</li><li>Scheduled E1 Drugs</li></ul>
-                            </div>
-                            <div class="card small">
-                                <a href="https://www.cannalogic.in" target="_blank" rel="noopener" title="Open Cannalogic in a new tab" data-track-id="service-cannalogic">
-                                    <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/cannalogic_1_uwgjys.png" alt="Data & MLOps logo">
-                                </a>
-                                <h3>Co-founder, Cannalogic</h3>
-                                <p class="subtext">Leading Medical Cannabis Brand</p>
-                                <p class="lead">I can help you to heal your body, mind and spirit with help of the sacred plant Cannabis.</p>
-                                <ul class="skills"><li>Doctor Consulation</li><li>Cannabis Products</li><li>Affiliate Marketing</li></ul>
-                            </div>
-                            <div class="card small">
-                                <a href="https://www.codesamaaj.com" target="_blank" rel="noopener" title="Open Codesamaaj in a new tab" data-track-id="service-codesamaaj">
-                                    <img class="service-logo" src="https://res.cloudinary.com/djwx0b9nj/image/upload/v1760731599/codesamaaj_m5zn91.png" alt="Founder's Support logo">
-                                </a>
-                                <h3>Activist, Codesamaaj</h3>
-                                <p class="subtext">Non Profit, Tech Community</p>
-                                <p class="lead">I can help you to find your passion, build your skills and connect with the right people.</p>
-                                <ul class="skills"><li>Hands on Workshops</li><li>Career Guidance</li><li>Startup Guidance</li></ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            
-            <!-- ===== VISION CALLOUT (duplicate of #callout content) ===== -->
-            <section data-section-id="callout" id="callout-2" class="section visible" style="margin-top: 18px;">
-                <div style="padding: 24px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius: 16px;">
-                    <h2>Vision — where tech and nature collide</h2>
-                    <p style="color: var(--text-muted); margin: 10px 0;">Machines replaced muscles. Now they're taking on minds. It's time for humans to expand where machines can't — meaning, the inner world.</p>
-                    <p style="margin: 8px 0 10px;">Nature holds mysteries — and one of them is cannabis as a tool for expanding consciousness. I don't claim magic; I claim careful study, respect, and ethical use. My work sits at that intersection: rigorous tech + rooted nature.</p>
-                    <div style="background: linear-gradient(90deg, rgba(31,163,90,0.06), rgba(34,116,165,0.04)); padding: 12px; border-radius: 12px; margin: 10px 0; border: 1px dashed rgba(255,255,255,0.03);">Want to co-create a self-running business? Or just swap some ideas? I'm in.</div>
-                </div>
-            </section>
-            
 
             <!-- ===== CONTACT (MAIN SITE) ===== -->
             <section data-section-id="contact" id="contact" class="section visible">
